@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material'
 import { useSelector } from 'react-redux'
 
+import SearchPodcasts from '../Search'
 import PodcastCard from '../PodcastCard'
 
 const PodcastsList = () => {
@@ -17,13 +18,16 @@ const PodcastsList = () => {
   })
 
   return (
-    <Grid
-      container
-      spacing={{ xs: 2, md: 3 }}
-      columns={{ xs: 4, sm: 8, md: 12 }}
-    >
-      {renderPodcastsList}
-    </Grid>
+    <>
+      <SearchPodcasts />
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        {renderPodcastsList}
+      </Grid>
+    </>
   )
 }
 

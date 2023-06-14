@@ -3,9 +3,9 @@ import { Container } from '@mui/material'
 import { useDispatch } from 'react-redux'
 
 import AppBar from '../modules/common/components/AppBar'
-import { savePodcasts } from '../redux/reducers/podcasts'
 import { getPodcasts } from '../modules/PodcastsList/services/getPodcasts'
 import PodcastsList from '../modules/PodcastsList/components/PodcastsList'
+import { savePodcasts, savePodcastsCopy } from '../redux/reducers/podcasts'
 
 const Home = ({ podcastsList }) => {
   const dispatch = useDispatch()
@@ -17,6 +17,7 @@ const Home = ({ podcastsList }) => {
   const savePodcastsonRedux = () => {
     if (podcastsList) {
       dispatch(savePodcasts(podcastsList))
+      dispatch(savePodcastsCopy(podcastsList))
     }
   }
 

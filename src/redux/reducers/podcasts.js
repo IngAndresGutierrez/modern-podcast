@@ -4,6 +4,7 @@ const podcatsSlice = createSlice({
   name: 'podcasts',
   initialState: {
     podcasts: [],
+    podcastsCopy: [],
     selectedPodcast: {},
     selectedEpisode: {},
     selectedPodcastDetail: {},
@@ -21,11 +22,15 @@ const podcatsSlice = createSlice({
     savePodcastDetail: (state, action) => {
       state.selectedPodcastDetail = action.payload
     },
+    savePodcastsCopy: (state, action) => {
+      state.podcastsCopy = action.payload
+    },
   },
 })
 
 export const {
   savePodcasts,
+  savePodcastsCopy,
   savePodcastDetail,
   saveSelectedPodcast,
   saveSelectedEpisode,
