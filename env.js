@@ -1,4 +1,3 @@
 export default {
-  BASE_URL:
-    'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json',
+  BASE_URL: 'https://itunes.apple.com',
 }

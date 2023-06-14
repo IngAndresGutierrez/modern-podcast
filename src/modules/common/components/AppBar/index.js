@@ -1,19 +1,22 @@
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Box, Toolbar, Typography, AppBar as MuiAppBar } from '@mui/material'
 
-import './styles.css'
 import styles from './styles'
 
 const AppBar = () => {
+  const router = useRouter()
+
+  const goToHome = () => {
+    router.push('/')
+  }
+
   return (
     <Box>
       <MuiAppBar color="transparent">
         <Toolbar>
-          <Link href="/" sx={styles.link}>
-            <Typography color="blue" sx={styles.title}>
-              Podcaster
-            </Typography>
-          </Link>
+          <Typography color="blue" sx={styles.title} onClick={goToHome}>
+            Podcaster
+          </Typography>
         </Toolbar>
       </MuiAppBar>
     </Box>

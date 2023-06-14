@@ -2,12 +2,12 @@ import { useEffect } from 'react'
 import { Container } from '@mui/material'
 import { useDispatch } from 'react-redux'
 
+import AppBar from '../modules/common/components/AppBar'
 import { savePodcasts } from '../redux/reducers/podcasts'
 import { getPodcasts } from '../modules/PodcastsList/services/getPodcasts'
 import PodcastsList from '../modules/PodcastsList/components/PodcastsList'
-import AppBar from '@/modules/common/components/AppBar'
 
-const Home = ({ data }) => {
+const Home = ({ podcastsList }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -15,8 +15,8 @@ const Home = ({ data }) => {
   }, [])
 
   const savePodcastsonRedux = () => {
-    if (data) {
-      dispatch(savePodcasts(data?.feed?.entry))
+    if (podcastsList) {
+      dispatch(savePodcasts(podcastsList))
     }
   }
 
@@ -33,11 +33,11 @@ const Home = ({ data }) => {
 export async function getServerSideProps() {
   try {
     const response = await getPodcasts()
-    const data = response.data
+    const podcastsList = response?.data?.feed?.entry
 
     return {
       props: {
-        data,
+        podcastsList,
       },
     }
   } catch (error) {
@@ -45,7 +45,7 @@ export async function getServerSideProps() {
 
     return {
       props: {
-        data: null,
+        podcastsList: null,
       },
     }
   }
